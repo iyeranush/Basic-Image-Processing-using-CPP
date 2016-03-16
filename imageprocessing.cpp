@@ -5,28 +5,26 @@
 using namespace std;
 int main()
 {
-
-
 	int a[]={10, 10, 15, 20, 30, 30, 30, 30, 20, 10, 10};
 	int size=11;
 	vector<int> v(a, a+11);
 	vector<int>::const_iterator i;
 	//cout<<v.size()<<endl;
-	vector<int> histogram;
-	histogram.resize(3,0);
+	vector<int> histogramContainer;
+	histogramContainer.resize(3,0);
 	//*************Histogram
 	for(i=v.begin();i!=v.end();i++)
 	{
 		if(*i>=0 && *i<=12)
-			{histogram[0]++;}
+			{histogramContainer[0]++;}
 		if(*i>=13 && *i<=24)
-			{histogram[1]++;}
+			{histogramContainer[1]++;}
 		if(*i>=25 && *i<=36)
-			{histogram[2]++;}
+			{histogramContainer[2]++;}
 	}
 	for(int j=0;j<3;j++)
 	{
-		cout<<histogram[j]<<"\t";
+		cout<<histogramContainer[j]<<"\t";
 	}
 	//*************Thresholding
 	vector<int> threshold;
@@ -68,7 +66,6 @@ int main()
 	cout<<"\nDialation:"<<endl;
 	for(int m=0;m<size;m++)
 	{
-		//if(m==0)dialate[m]=threshold[m];
 		if(m==0 )
 					{dialate[m-1]=threshold[m-1];}	
 		else{
@@ -77,8 +74,6 @@ int main()
 				dialate[m]=1;
 				dialate[m-1]=1;
 				dialate[m+1]=1;
-				//cout<<"hi";
-
 			}
 
 			else
@@ -87,8 +82,6 @@ int main()
 				dialate[m]=threshold[m];
 			}
 		}
-
-		//cout<<dialate[m]<<"\t";
 	}
 	for(int m=0;m<size;m++)
 	{
